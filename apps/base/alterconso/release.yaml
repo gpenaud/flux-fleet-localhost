@@ -3,9 +3,10 @@ apiVersion: helm.toolkit.fluxcd.io/v2
 kind: HelmRelease
 metadata:
   name: alterconso
-  namespace: default
+  namespace: flux-system
 spec:
   releaseName: alterconso
+  releaseNamespace: default
   chart:
     spec:
       chart: alterconso
