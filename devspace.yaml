@@ -1,0 +1,36 @@
+version: v2beta1
+name: flux-fleet
+
+commands:
+  reconcile-source:
+    description: Reconcile source flux-system
+    command: |- 
+      flux -n flux-system reconcile source git flux-system
+  
+  reconcile-apps: 
+    description: Reconcile apps-related resources
+    command: |-
+      devspace run reconcile-source
+      flux -n flux-system reconcile kustomization apps
+      flux -n alterconso reconcile helmrelease alterconso
+      flux -n alterconso reconcile image repository alterconso
+      flux -n alterconso reconcile image policy alterconso
+      flux -n alterconso reconcile image update alterconso
+
+  reconcile-all:
+    description: Reconcile all types of resources
+    command: |-
+      devspace run reconcile-source
+      flux -n flux-system reconcile kustomization infra-controllers
+      flux -n flux-system reconcile kustomization infra-configs
+      devspace run reconcile-apps
+
+  describe-automation:
+    description: Describe automation state
+    command: |-
+       kubectl -n alterconso describe imageupdateautomations.image.toolkit.fluxcd.io alterconso
+
+  reconcile-artifacts:
+    description: Reconcile generated artifacts
+    command: |-
+      kubectl -n flux-system annotate --overwrite artifactgenerators.source.extensions.fluxcd.io flux-system reconcile.fluxcd.io/requestedAt="<timestamp>"
