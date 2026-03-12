@@ -5,10 +5,13 @@ metadata:
   name: traefik
   namespace: kube-system
 spec:
-  interval: 1m0s
+  interval: 24h
   url: oci://ghcr.io/traefik/helm/traefik
+  layerSelector:
+    mediaType: "application/vnd.cncf.helm.chart.content.v1.tar+gzip"
+    operation: copy
   ref:
-    semver: ">= 38.0.*"
+    tag: "39.0.0"
 
 ---
 apiVersion: helm.toolkit.fluxcd.io/v2
@@ -40,3 +43,11 @@ spec:
     providers:
       kubernetesCRD:
         allowCrossNamespace: true
+    ports:
+      web:
+        http:
+          redirections:
+            entryPoint:
+              to: websecure
+              scheme: https
+              permanent: true
