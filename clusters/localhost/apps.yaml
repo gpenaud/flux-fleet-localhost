@@ -15,5 +15,9 @@ spec:
     name: apps
   path: ./localhost 
   prune: true
+  decryption:
+    provider: sops
+    secretRef:
+      name: sops-age-private-key
   wait: true
   
