@@ -2,10 +2,10 @@
 apiVersion: kustomize.config.k8s.io/v1beta1
 kind: Kustomization
 resources:
-  - ../../base/alterconso
-  - secrets.enc.yaml
+  - ./../base/alterconso
+  - ./alterconso/secrets.enc.yaml
 patches:
-  - path: alterconso/values.yaml
+  - path: ./alterconso/values.yaml
     target:
       kind: HelmRelease
       name: alterconso
