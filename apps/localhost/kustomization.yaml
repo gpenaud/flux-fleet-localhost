@@ -4,6 +4,10 @@ kind: Kustomization
 resources:
   - ../base/alterconso
   - ./alterconso/secrets.enc.yaml
+decryption:
+  provider: sops
+  secretRef:
+    name: sops-age-private-key
 patches:
   - path: alterconso/values.yaml
     target:
