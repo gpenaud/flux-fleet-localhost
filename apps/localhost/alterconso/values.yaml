@@ -4,6 +4,23 @@ metadata:
   name: alterconso
   namespace: alterconso
 spec:
+  valuesFrom:
+  - kind: Secret
+    name: alterconso-secrets
+    valuesKey: MYSQL_PASSWORD
+    targetPath: webapp.env.MYSQL_PASSWORD
+  - kind: Secret
+    name: alterconso-secrets
+    valuesKey: MYSQL_ROOT_PASSWORD
+    targetPath: webapp.env.MYSQL_ROOT_PASSWORD
+  - kind: Secret
+    name: alterconso-secrets
+    valuesKey: MYSQL_PASSWORD
+    targetPath: database.env.MYSQL_PASSWORD
+  - kind: Secret
+    name: alterconso-secrets
+    valuesKey: MYSQL_ROOT_PASSWORD
+    targetPath: database.env.MYSQL_ROOT_PASSWORD
   values:
     webapp:
       image:
@@ -17,8 +34,6 @@ spec:
             tls: true
       vhost: alterconso.gpenaud.localhost
     database:
-      env:
-        MYSQL_PASSWORD: alterconso
       local:
         path: /mnt/k3s/alterconso
       nodeAffinity:
@@ -29,20 +44,4 @@ spec:
                   operator: In
                   values:
                     - work
-  valuesFrom:
-    - kind: Secret
-      name: alterconso-secrets
-      valuesKey: MYSQL_PASSWORD
-      targetPath: webapp.env.MYSQL_PASSWORD
-    - kind: Secret
-      name: alterconso-secrets
-      valuesKey: MYSQL_ROOT_PASSWORD
-      targetPath: webapp.env.MYSQL_ROOT_PASSWORD
-    - kind: Secret
-      name: alterconso-secrets
-      valuesKey: MYSQL_PASSWORD
-      targetPath: database.env.MYSQL_PASSWORD
-    - kind: Secret
-      name: alterconso-secrets
-      valuesKey: MYSQL_ROOT_PASSWORD
-      targetPath: database.env.MYSQL_ROOT_PASSWORD
+
