@@ -1,0 +1,18 @@
+---
+apiVersion: external-secrets.io/v1
+kind: ExternalSecret
+metadata:
+  name: regcred
+  namespace: alterconso
+spec:
+  refreshInterval: 1h
+  secretStoreRef:
+    kind: ClusterSecretStore
+    name: kube-system-secret-store
+  target:
+    name: dockerconfigjson-github-com
+    template:
+      type: kubernetes.io/dockerconfigjson
+  dataFrom:
+    - extract:
+        key: regcred
