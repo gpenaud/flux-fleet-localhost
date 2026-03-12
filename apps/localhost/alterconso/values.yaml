@@ -7,7 +7,7 @@ spec:
   values:
     webapp:
       image:
-        version: 1.0.5 # {"$imagepolicy": "alterconso:alterconso:tag"}
+        version: 1.0.6 # {"$imagepolicy": "alterconso:alterconso:tag"}
       ingress:
         annotations:
           cert-manager.io/cluster-issuer: "mkcert-issuer"
