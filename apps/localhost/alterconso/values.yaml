@@ -4,23 +4,6 @@ metadata:
   name: alterconso
   namespace: alterconso
 spec:
-  valuesFrom:
-  - kind: Secret
-    name: alterconso-secrets
-    valuesKey: MYSQL_PASSWORD
-    targetPath: webapp.env.MYSQL_PASSWORD
-  - kind: Secret
-    name: alterconso-secrets
-    valuesKey: MYSQL_ROOT_PASSWORD
-    targetPath: webapp.env.MYSQL_ROOT_PASSWORD
-  - kind: Secret
-    name: alterconso-secrets
-    valuesKey: MYSQL_PASSWORD
-    targetPath: database.env.MYSQL_PASSWORD
-  - kind: Secret
-    name: alterconso-secrets
-    valuesKey: MYSQL_ROOT_PASSWORD
-    targetPath: database.env.MYSQL_ROOT_PASSWORD
   values:
     webapp:
       image:
@@ -44,4 +27,20 @@ spec:
                   operator: In
                   values:
                     - work
-
+  valuesFrom:
+    - kind: Secret
+      name: alterconso
+      valuesKey: MYSQL_DATABASE
+      targetPath: mysql.database
+    - kind: Secret
+      name: alterconso
+      valuesKey: MYSQL_USER
+      targetPath: mysql.user
+    - kind: Secret
+      name: alterconso
+      valuesKey: MYSQL_PASSWORD
+      targetPath: mysql.password
+    - kind: Secret
+      name: alterconso
+      valuesKey: MYSQL_ROOT_PASSWORD
+      targetPath: mysql.rootPassword
