@@ -13,7 +13,7 @@ spec:
   sourceRef:
     kind: GitRepository
     name: flux-system
-  path: ./localhost
+  path: ./applications/localhost
   prune: true
   decryption:
     provider: sops

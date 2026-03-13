@@ -11,7 +11,7 @@ spec:
   sourceRef:
     kind: GitRepository
     name: flux-system
-  path: ./localhost/controllers
+  path: ./infrastructure/localhost/controllers
   prune: true
   wait: true
 
@@ -30,7 +30,7 @@ spec:
   sourceRef:
     kind: GitRepository
     name: flux-system
-  path: ./localhost/configurations
+  path: ./infrastructure/localhost/configurations
   prune: true
   patches:
     - target:
