@@ -4,7 +4,7 @@ kind: Kustomization
 resources:
   - ./../base/alterconso
 patches:
-  - path: ./alterconso/values.yaml
+  - path: ./values/alterconso.yaml
     target:
       kind: HelmRelease
       name: alterconso
@@ -14,4 +14,4 @@ patches:
     patch: |
       - op: replace
         path: /spec/update/path
-        value: ./apps/localhost
+        value: ./applications/localhost

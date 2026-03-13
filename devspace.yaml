@@ -8,7 +8,7 @@ commands:
       flux -n flux-system reconcile source git flux-system
   
   reconcile-images: 
-    description: Reconcile apps-related resources
+    description: Reconcile applications-related resources
     command: |-
       flux -n alterconso reconcile image repository alterconso
       flux -n alterconso reconcile image policy alterconso
@@ -41,7 +41,7 @@ commands:
       devspace run reconcile-source
       flux -n flux-system reconcile kustomization infrastructure-controllers
       flux -n flux-system reconcile kustomization infrastructure-configs
-      devspace run reconcile-apps
+      devspace run reconcile-applications
       devspace run reconcile-images
 
   describe-automation:
