@@ -1,0 +1,37 @@
+---
+apiVersion: source.toolkit.fluxcd.io/v1
+kind: HelmRepository
+metadata:
+  name: k8up
+  namespace: kube-system
+spec:
+  interval: 5m0s
+  url: https://k8up-io.github.io/k8up
+  ref:
+    tag: "4.8.6"
+
+---
+apiVersion: helm.toolkit.fluxcd.io/v2
+kind: HelmRelease
+metadata:
+  name: k8up
+  namespace: kube-system
+spec:
+  interval: 5m
+  timeout: 5m
+  chart:
+    spec:
+      chart: k8up
+      sourceRef:
+        kind: HelmRepository
+        name: k8up
+      interval: 5m
+  install:
+    remediation:
+      retries: 3
+  upgrade:
+    remediation:
+      retries: 
+  values:
+    k8up:
+      skipWithoutAnnotation: true
