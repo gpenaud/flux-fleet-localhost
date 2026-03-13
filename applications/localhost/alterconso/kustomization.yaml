@@ -5,7 +5,7 @@ resources:
   - ./secrets.enc.yaml
   - ./../../base/alterconso
 patches:
-  - path: ./alterconso/values.yaml
+  - path: ./values.yaml
     target:
       kind: HelmRelease
       name: alterconso
