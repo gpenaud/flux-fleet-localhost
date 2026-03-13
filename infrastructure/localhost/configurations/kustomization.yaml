@@ -3,5 +3,6 @@ kind: Kustomization
 namespace: flux-system
 resources:
   - ../../base/configurations
-  - mkcert-issuer.yaml
+  - mkcert/ca.yaml
+  - mkcert/cluster-issuer.yaml
   - traefik-dashboard.yaml
