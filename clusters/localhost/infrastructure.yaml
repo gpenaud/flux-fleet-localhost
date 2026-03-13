@@ -32,6 +32,7 @@ spec:
     name: flux-system
   path: ./infrastructure/localhost/configurations
   prune: true
+  wait: true
   patches:
     - target:
         kind: Certificate

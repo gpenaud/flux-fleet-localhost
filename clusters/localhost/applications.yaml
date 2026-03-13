@@ -19,4 +19,4 @@ spec:
     secretRef:
       name: sops-age-private-key
   wait: true
-  timeout: 30m    # au lieu de 5m
+  timeout: 5m    # au lieu de 5m
