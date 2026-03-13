@@ -31,7 +31,7 @@ spec:
       retries: 3
   upgrade:
     remediation:
-      retries: 
+      retries: 3
   values:
     k8up:
       skipWithoutAnnotation: true
