@@ -9,7 +9,6 @@ spec:
     - name: infrastructure-configs
   interval: 5m
   retryInterval: 30s
-  timeout: 5m
   sourceRef:
     kind: GitRepository
     name: flux-system
@@ -19,4 +18,5 @@ spec:
     provider: sops
     secretRef:
       name: sops-age-private-key
-  wait: false
+  wait: true
+  timeout: 30m    # au lieu de 5m
