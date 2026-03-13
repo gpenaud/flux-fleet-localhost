@@ -24,11 +24,6 @@ spec:
           to: "@artifact/base/"
         - from: "@monorepo/infrastructure/configs/localhost/**"
           to: "@artifact/localhost/"
-    - name: applications-secrets
-      originRevision: "@monorepo"
-      copy:
-        - from: "@monorepo/applications/localhost/secrets/**"
-          to: "@artifact/localhost/"
     - name: applications
       originRevision: "@monorepo"
       copy:
