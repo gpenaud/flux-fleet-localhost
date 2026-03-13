@@ -9,9 +9,9 @@ spec:
   retryInterval: 2m
   timeout: 5m
   sourceRef:
-    kind: ExternalArtifact
-    name: infrastructure-controllers
-  path: ./localhost
+    kind: GitRepository
+    name: flux-system
+  path: ./localhost/controllers
   prune: true
   wait: true
 
@@ -28,9 +28,9 @@ spec:
   retryInterval: 2m
   timeout: 5m
   sourceRef:
-    kind: ExternalArtifact
-    name: infrastructure-configs
-  path: ./localhost
+    kind: GitRepository
+    name: flux-system
+  path: ./localhost/configurations
   prune: true
   patches:
     - target:
