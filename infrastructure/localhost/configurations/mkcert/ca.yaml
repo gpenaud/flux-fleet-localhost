@@ -12,7 +12,7 @@ spec:
   target:
     name: mkcert-ca
     template:
-      type: opaque
+      type: Opaque
   dataFrom:
     - extract:
         key: mkcert-ca
