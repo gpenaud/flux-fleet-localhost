@@ -15,14 +15,6 @@ commands:
       flux -n alterconso reconcile image policy alterconso
       flux -n alterconso reconcile image update alterconso
 
-  reconcile-applications-secrets: 
-    description: Reconcile applications-secrets-related resources
-    command: |-
-      devspace run reconcile-source
-      flux -n flux-system reconcile kustomization applications-secrets
-      flux -n alterconso reconcile source helm alterconso
-      flux -n alterconso reconcile helmrelease alterconso
-
   reconcile-applications: 
     description: Reconcile applications-related resources
     command: |-
@@ -35,6 +27,13 @@ commands:
     description: Reconcile alterconso helmrelease resource
     command: |-
       flux -n alterconso reconcile helmrelease alterconso
+
+  reconcile-infrastructure:
+    description: Reconcile infrastructure-related resources
+    command: |-
+      devspace run reconcile-source
+      flux -n flux-system reconcile kustomization infrastructure-controllers
+      flux -n flux-system reconcile kustomization infrastructure-configs
 
   reconcile-all:
     description: Reconcile all types of resources
@@ -49,8 +48,3 @@ commands:
     description: Describe automation state
     command: |-
        kubectl -n alterconso describe imageupdateautomations.image.toolkit.fluxcd.io alterconso
-
-  reconcile-artifacts:
-    description: Reconcile generated artifacts
-    command: |-
-      kubectl -n flux-system annotate --overwrite artifactgenerators.source.extensions.fluxcd.io flux-system reconcile.fluxcd.io/requestedAt="<timestamp>"
