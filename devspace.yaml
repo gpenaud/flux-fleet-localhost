@@ -6,6 +6,7 @@ commands:
     description: Reconcile source flux-system
     command: |- 
       flux -n flux-system reconcile source git flux-system
+      flux -n flux-system reconcile kustomization flux-system
   
   reconcile-images: 
     description: Reconcile applications-related resources
