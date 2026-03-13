@@ -10,7 +10,7 @@ spec:
     kind: ClusterSecretStore
     name: kube-system-secret-store
   target:
-    name: dockerconfigjson-github-com
+    name: regcred
     template:
       type: kubernetes.io/dockerconfigjson
   dataFrom:
