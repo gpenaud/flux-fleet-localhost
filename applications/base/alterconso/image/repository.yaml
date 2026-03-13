@@ -8,4 +8,4 @@ spec:
   image: ghcr.io/gpenaud/alterconso
   interval: 5m
   secretRef:
-    name: dockerconfigjson-github-com
+    name: regcred
