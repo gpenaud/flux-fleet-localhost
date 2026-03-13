@@ -14,11 +14,19 @@ commands:
       flux -n alterconso reconcile image policy alterconso
       flux -n alterconso reconcile image update alterconso
 
-  reconcile-apps: 
-    description: Reconcile apps-related resources
+  reconcile-applications-secrets: 
+    description: Reconcile applications-secrets-related resources
     command: |-
       devspace run reconcile-source
-      flux -n flux-system reconcile kustomization apps
+      flux -n flux-system reconcile kustomization applications-secrets
+      flux -n alterconso reconcile source helm alterconso
+      flux -n alterconso reconcile helmrelease alterconso
+
+  reconcile-applications: 
+    description: Reconcile applications-related resources
+    command: |-
+      devspace run reconcile-source
+      flux -n flux-system reconcile kustomization applications
       flux -n alterconso reconcile source helm alterconso
       flux -n alterconso reconcile helmrelease alterconso
 
@@ -31,8 +39,8 @@ commands:
     description: Reconcile all types of resources
     command: |-
       devspace run reconcile-source
-      flux -n flux-system reconcile kustomization infra-controllers
-      flux -n flux-system reconcile kustomization infra-configs
+      flux -n flux-system reconcile kustomization infrastructure-controllers
+      flux -n flux-system reconcile kustomization infrastructure-configs
       devspace run reconcile-apps
       devspace run reconcile-images
 
