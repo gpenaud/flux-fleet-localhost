@@ -17,10 +17,6 @@ spec:
       secretAccessKeySecretRef:
         name: s3-ovh
         key: AWS_SECRET_ACCESS_KEY
-  podSecurityContext:
-    allowPrivilegeEscalation: true
-    runAsUser: 1000
-    runAsGroup: 1000
   backup:
     # 4 fois par semaine : lundi, mardi, mercredi, jeudi à 02h00
     schedule: '0 2 * * 1,2,3,4'
