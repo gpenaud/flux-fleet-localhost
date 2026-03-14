@@ -4,9 +4,11 @@ kind: Kustomization
 namespace: alterconso
 resources:
   - namespace.yaml
-  - regcred.yaml
+  - external-secrets/regcred.yaml
+  - external-secrets/s3-ovh.yaml
   - helm/repository.yaml
   - helm/release.yaml
   - image/repository.yaml
   - image/policy.yaml
   - image/updateautomation.yaml
+  - backup.yaml

@@ -16,3 +16,6 @@ patches:
       - op: replace
         path: /spec/update/path
         value: ./applications/localhost
+
+patchesStrategicMerge:
+  - backup.yaml

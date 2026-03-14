@@ -1,0 +1,18 @@
+---
+apiVersion: external-secrets.io/v1
+kind: ExternalSecret
+metadata:
+  name: s3-ovh
+  namespace: alterconso
+spec:
+  refreshInterval: 1h
+  secretStoreRef:
+    kind: ClusterSecretStore
+    name: kube-system-secret-store
+  target:
+    name: s3-ovh
+    template:
+      type: Opaque
+  dataFrom:
+    - extract:
+        key: s3-ovh

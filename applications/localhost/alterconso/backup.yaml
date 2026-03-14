@@ -1,0 +1,10 @@
+apiVersion: k8up.io/v1
+kind: Schedule
+metadata:
+  name: alterconso
+  namespace: alterconso
+spec:
+  podSecurityContext:
+    allowPrivilegeEscalation: true
+    runAsUser: 1000
+    runAsGroup: 1000
