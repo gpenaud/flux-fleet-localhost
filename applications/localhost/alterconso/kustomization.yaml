@@ -4,6 +4,7 @@ kind: Kustomization
 resources:
   - ../../base/alterconso
   - secrets.enc.yaml
+  - backup-pod-config.yaml
 patches:
   - path: values.yaml
     target:
@@ -16,6 +17,12 @@ patches:
       - op: replace
         path: /spec/update/path
         value: ./applications/localhost
-
-patchesStrategicMerge:
-  - backup.yaml
+  - target: 
+      kind: Schedule
+      name: alterconso
+    patch: |
+      - op: add
+        path: /spec
+        value:
+          podConfig:
+            name: alterconso
