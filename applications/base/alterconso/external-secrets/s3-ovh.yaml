@@ -3,7 +3,6 @@ apiVersion: external-secrets.io/v1
 kind: ExternalSecret
 metadata:
   name: s3-ovh
-  namespace: alterconso
 spec:
   refreshInterval: 1h
   secretStoreRef:

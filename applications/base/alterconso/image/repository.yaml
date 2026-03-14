@@ -3,7 +3,6 @@ apiVersion: image.toolkit.fluxcd.io/v1
 kind: ImageRepository
 metadata:
   name: alterconso
-  namespace: alterconso
 spec:
   image: ghcr.io/gpenaud/alterconso
   interval: 5m
