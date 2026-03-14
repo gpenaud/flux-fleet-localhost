@@ -17,16 +17,21 @@ spec:
             tls: true
       vhost: alterconso.gpenaud.localhost
     database:
-      local:
-        path: /mnt/k3s/alterconso
-      nodeAffinity:
-        required:
-          nodeSelectorTerms:
-            - matchExpressions:
-                - key: kubernetes.io/hostname
-                  operator: In
-                  values:
-                    - work
+      annotations:
+        k8up.io/backupcommand: mysqldump --hex-blob --no-tablespaces -u ${MYSQL_USER} -p${MYSQL_PASSWORD} ${MYSQL_DATABASE}
+        k8up.io/file-extension: .sql
+      persistentVolume:
+        backup: true
+        local:
+          path: /mnt/k3s/alterconso
+        nodeAffinity:
+          required:
+            nodeSelectorTerms:
+              - matchExpressions:
+                  - key: kubernetes.io/hostname
+                    operator: In
+                    values:
+                      - work
   valuesFrom:
     - kind: Secret
       name: alterconso
