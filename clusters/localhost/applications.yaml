@@ -6,7 +6,7 @@ metadata:
   namespace: flux-system
 spec:
   dependsOn:
-    - name: infrastructure-configs
+    - name: infrastructure-configurations
   interval: 5m
   retryInterval: 30s
   sourceRef:
@@ -19,4 +19,4 @@ spec:
     secretRef:
       name: sops-age-private-key
   wait: true
-  timeout: 5m    # au lieu de 5m
+  timeout: 5m
