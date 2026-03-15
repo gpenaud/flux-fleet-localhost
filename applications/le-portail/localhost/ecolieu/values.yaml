@@ -7,6 +7,7 @@ spec:
     wordpressUsername: ""
     wordpressPassword: ""
     wordpressEmail: dugrainamoudre@gmail.com
+    extraEnvVarsSecret: ecolieu-wordpress
     mariadb:
       enabled: true
       auth:
@@ -28,9 +29,9 @@ spec:
   valuesFrom:
     - kind: Secret
       name: ecolieu
-      valuesKey: wordpress-username
+      valuesKey: WORDPRESS_USERNAME
       targetPath: wordpressUsername
     - kind: Secret
       name: ecolieu
-      valuesKey: wordpress-password
+      valuesKey: WORDPRESS_PASSWORD
       targetPath: wordpressPassword
