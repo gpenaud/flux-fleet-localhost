@@ -10,7 +10,6 @@ spec:
     name: flux-system
   path: ./applications/le-portail/localhost
   prune: true
-  createNamespace: true
   dependsOn:
     - name: tenants
   decryption:
