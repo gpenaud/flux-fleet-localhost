@@ -8,11 +8,9 @@ spec:
     wordpressPassword: ""
     wordpressEmail: dugrainamoudre@gmail.com
     mariadb:
+      enabled: true
       auth:
-        rootPassword: ""
-        database: ""
-        username: ""
-        password: ""
+        existingSecret: ecolieu-mariadb
     wordpressPlugins: []
     service:
       type: ClusterIP
@@ -30,25 +28,9 @@ spec:
   valuesFrom:
     - kind: Secret
       name: ecolieu
-      valuesKey: WORDPRESS_USERNAME
+      valuesKey: wordpress-username
       targetPath: wordpressUsername
     - kind: Secret
       name: ecolieu
-      valuesKey: WORDPRESS_PASSWORD
+      valuesKey: wordpress-password
       targetPath: wordpressPassword
-    - kind: Secret
-      name: ecolieu
-      valuesKey: MARIADB_USER
-      targetPath: mariadb.auth.user
-    - kind: Secret
-      name: ecolieu
-      valuesKey: MARIADB_DATABASE
-      targetPath: mariadb.auth.database
-    - kind: Secret
-      name: ecolieu
-      valuesKey: MARIADB_PASSWORD
-      targetPath: mariadb.auth.password
-    - kind: Secret
-      name: ecolieu
-      valuesKey: MARIADB_ROOT_PASSWORD
-      targetPath: mariadb.auth.rootPassword
