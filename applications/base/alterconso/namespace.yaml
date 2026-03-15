@@ -1,0 +1,9 @@
+---
+apiVersion: v1
+kind: Namespace
+metadata:
+  name: ${TENANT}-alterconso
+  labels:
+    tenant: "${TENANT}"
+    app: "alterconso"
+    managed-by: "fluxcd"
