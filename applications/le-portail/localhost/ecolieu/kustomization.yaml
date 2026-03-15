@@ -11,10 +11,6 @@ patches:
     target:
       kind: HelmRelease
       name: le-portail
-    patch: |
-      - op: replace 
-        path: /spec/update/path
-        value: ./applications/le-portail/localhost
   - target:
       kind: Namespace
       name: le-portail-wordpress
