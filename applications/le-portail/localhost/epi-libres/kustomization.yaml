@@ -7,17 +7,10 @@ resources:
   - secrets.enc.yaml
   - backup-pod-config.yaml
 patches:
-  - target:
+  - path: values.yaml
+    target:
       kind: HelmRelease
-      name: wordpress
-    patch: |
-      - op: replace
-        path: /metadata/name
-        value: le-portail-ecolieu
-  - target:
-      kind: HelmRelease
-      name: le-portail-ecolieu
-    path: values.yaml
+      name: le-portail
   - target:
       kind: Namespace
       name: le-portail-wordpress
@@ -25,7 +18,7 @@ patches:
       - op: replace
         path: /metadata/name
         value: le-portail-ecolieu
-  - target:
+  - target: 
       kind: Schedule
       name: le-portail
     patch: |

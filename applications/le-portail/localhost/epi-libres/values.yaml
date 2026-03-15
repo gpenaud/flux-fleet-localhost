@@ -1,0 +1,53 @@
+apiVersion: helm.toolkit.fluxcd.io/v2
+kind: HelmRelease
+metadata:
+  name: ecolieu
+spec:
+  wordpressUsername: ""
+  wordpressPassword: ""
+  wordpressEmail: dugrainamoudre@gmail.com
+  mariadb:
+    auth:
+      rootPassword: ""
+      database: ""
+      username: ""
+      password: ""
+  wordpressPlugins: []
+  service:
+    type: ClusterIP
+  ingress:
+    enabled: true
+    ingressClassName: traefik
+    hostname: le-portail.gpenaud.localhost
+    annotations:
+      kubernetes.io/ingress.class: traefik
+      cert-manager.io/cluster-issuer: mkcert
+    extraTls:
+      - hosts:
+          - le-portail.gpenaud.localhost
+        secretName: le-portail.gpenaud.localhost-tls
+  valuesFrom:
+    - kind: Secret
+      name: ecolieu
+      valuesKey: WORDPRESS_USERNAME
+      targetPath: wordpressUsername
+    - kind: Secret
+      name: ecolieu
+      valuesKey: WORDPRESS_PASSWORD
+      targetPath: wordpressPassword
+    - kind: Secret
+      name: ecolieu
+      valuesKey: MYSQL_USER
+      targetPath: mariadb.auth.user
+    - kind: Secret
+      name: ecolieu
+      valuesKey: MYSQL_DATABASE
+      targetPath: mariadb.auth.database
+    - kind: Secret
+      name: ecolieu
+      valuesKey: MYSQL_PASSWORD
+      targetPath: mariadb.auth.password
+    - kind: Secret
+      name: ecolieu
+      valuesKey: MYSQL_ROOT_PASSWORD
+      targetPath: mariadb.auth.rootPassword
