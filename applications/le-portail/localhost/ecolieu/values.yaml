@@ -7,7 +7,22 @@ spec:
     wordpressUsername: ""
     wordpressPassword: ""
     wordpressEmail: dugrainamoudre@gmail.com
-    extraEnvVarsSecret: ecolieu-wordpress
+    extraEnvVars:
+      - name: WORDPRESS_DATABASE_USER
+        valueFrom:
+          secretKeyRef:
+            name: ecolieu-wordpress
+            key: WORDPRESS_DATABASE_USER
+      - name: WORDPRESS_DATABASE_PASSWORD
+        valueFrom:
+          secretKeyRef:
+            name: ecolieu-wordpress
+            key: WORDPRESS_DATABASE_PASSWORD
+      - name: WORDPRESS_DATABASE_HOST
+        valueFrom:
+          secretKeyRef:
+            name: ecolieu-wordpress
+            key: WORDPRESS_DATABASE_HOST
     mariadb:
       enabled: true
       auth:
