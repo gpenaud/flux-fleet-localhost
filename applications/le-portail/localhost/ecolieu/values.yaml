@@ -1,31 +1,32 @@
 apiVersion: helm.toolkit.fluxcd.io/v2
 kind: HelmRelease
 metadata:
-  name: ecolieu
+  name: le-portail-ecolieu
 spec:
-  wordpressUsername: ""
-  wordpressPassword: ""
-  wordpressEmail: dugrainamoudre@gmail.com
-  mariadb:
-    auth:
-      rootPassword: ""
-      database: ""
-      username: ""
-      password: ""
-  wordpressPlugins: []
-  service:
-    type: ClusterIP
-  ingress:
-    enabled: true
-    ingressClassName: traefik
-    hostname: le-portail.gpenaud.localhost
-    annotations:
-      kubernetes.io/ingress.class: traefik
-      cert-manager.io/cluster-issuer: mkcert
-    extraTls:
-      - hosts:
-          - le-portail.gpenaud.localhost
-        secretName: le-portail.gpenaud.localhost-tls
+  values:
+    wordpressUsername: ""
+    wordpressPassword: ""
+    wordpressEmail: dugrainamoudre@gmail.com
+    mariadb:
+      auth:
+        rootPassword: ""
+        database: ""
+        username: ""
+        password: ""
+    wordpressPlugins: []
+    service:
+      type: ClusterIP
+    ingress:
+      enabled: true
+      ingressClassName: traefik
+      hostname: le-portail.gpenaud.localhost
+      annotations:
+        kubernetes.io/ingress.class: traefik
+        cert-manager.io/cluster-issuer: mkcert
+      extraTls:
+        - hosts:
+            - le-portail.gpenaud.localhost
+          secretName: le-portail.gpenaud.localhost-tls
   valuesFrom:
     - kind: Secret
       name: ecolieu
