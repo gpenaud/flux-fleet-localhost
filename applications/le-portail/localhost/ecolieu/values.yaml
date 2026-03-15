@@ -38,17 +38,17 @@ spec:
       targetPath: wordpressPassword
     - kind: Secret
       name: ecolieu
-      valuesKey: MYSQL_USER
+      valuesKey: MARIADB_USER
       targetPath: mariadb.auth.user
     - kind: Secret
       name: ecolieu
-      valuesKey: MYSQL_DATABASE
+      valuesKey: MARIADB_DATABASE
       targetPath: mariadb.auth.database
     - kind: Secret
       name: ecolieu
-      valuesKey: MYSQL_PASSWORD
+      valuesKey: MARIADB_PASSWORD
       targetPath: mariadb.auth.password
     - kind: Secret
       name: ecolieu
-      valuesKey: MYSQL_ROOT_PASSWORD
+      valuesKey: MARIADB_ROOT_PASSWORD
       targetPath: mariadb.auth.rootPassword
