@@ -1,0 +1,9 @@
+---
+apiVersion: v1
+kind: Namespace
+metadata:
+  name: le-portail-wordpress
+  labels:
+    alter-it.org/tenant: "le-portail"
+    alter-it.org/app: "wordpress"
+    alter-it.org/managed-by: "fluxcd"

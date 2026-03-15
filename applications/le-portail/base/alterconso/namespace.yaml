@@ -4,6 +4,6 @@ kind: Namespace
 metadata:
   name: ${TENANT}-alterconso
   labels:
-    tenant: "${TENANT}"
-    app: "alterconso"
-    managed-by: "fluxcd"
+    alter-it.org/tenant: "${TENANT}"
+    alter-it.org/app: "alterconso"
+    alter-it.org/managed-by: "fluxcd"
