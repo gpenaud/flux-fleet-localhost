@@ -20,8 +20,6 @@ commands:
     command: |-
       devspace run reconcile-source
       flux -n flux-system reconcile kustomization applications
-      flux -n alterconso reconcile source helm alterconso
-      flux -n alterconso reconcile helmrelease alterconso
 
   reconcile-alterconso:
     description: Reconcile alterconso helmrelease resource
@@ -40,7 +38,7 @@ commands:
     command: |-
       devspace run reconcile-source
       flux -n flux-system reconcile kustomization infrastructure-controllers
-      flux -n flux-system reconcile kustomization infrastructure-configs
+      flux -n flux-system reconcile kustomization infrastructure-configurations
       devspace run reconcile-applications
       devspace run reconcile-images
 
